@@ -8,6 +8,7 @@ import { MAX_FILES, processFileAttachments } from '@/lib/fileUtils';
 import { SettingsDialog } from '@/components/layout/SettingsDialog';
 import { useTaskStore } from '@/stores/taskStore';
 import { getAccomplish } from '@/lib/accomplish';
+import { createLogger } from '@/lib/logger';
 import { springs } from '@/lib/animations';
 import { X, ArrowUpLeft } from '@phosphor-icons/react';
 import { hasAnyReadyProvider } from '@accomplish_ai/agent-core/common';
@@ -27,6 +28,8 @@ const USE_CASE_KEYS = [
 ] as const;
 
 const FAVORITES_PREVIEW_COUNT = 6;
+
+const logger = createLogger('Home');
 
 export function HomePage() {
   const [prompt, setPrompt] = useState('');
@@ -135,17 +138,21 @@ export function HomePage() {
       return;
     }
 
-    const isE2EMode = await accomplish.isE2EMode();
-    if (!isE2EMode) {
-      const settings = await accomplish.getProviderSettings();
-      if (!hasAnyReadyProvider(settings)) {
-        setSettingsInitialTab('providers');
-        setShowSettingsDialog(true);
-        return;
+    try {
+      const isE2EMode = await accomplish.isE2EMode();
+      if (!isE2EMode) {
+        const settings = await accomplish.getProviderSettings();
+        if (!hasAnyReadyProvider(settings)) {
+          setSettingsInitialTab('providers');
+          setShowSettingsDialog(true);
+          return;
+        }
       }
-    }
 
-    await executeTask();
+      await executeTask();
+    } catch (err) {
+      logger.error('Failed to submit task:', err);
+    }
   };
 
   const handleSettingsDialogChange = (open: boolean) => {
