@@ -17,7 +17,7 @@
   <a href="https://downloads.accomplish.ai/downloads/0.4.8/linux/Accomplish-0.4.8-linux-arm64.AppImage"><img src="https://img.shields.io/badge/Download-Linux_(ARM64)-0ea5e9?style=flat-square" alt="Linux için İndirin (ARM64)" /></a>
   <a href="https://downloads.accomplish.ai/downloads/0.4.8/linux/Accomplish-0.4.8-linux-x86_64.AppImage"><img src="https://img.shields.io/badge/Download-Linux_(x64)-0ea5e9?style=flat-square" alt="Linux için İndirin (x64)" /></a>
   <a href="https://downloads.accomplish.ai/downloads/0.4.8/linux/Accomplish-0.4.8-linux-amd64.deb"><img src="https://img.shields.io/badge/Download-Linux_(.deb_x64)-0ea5e9?style=flat-square" alt="Linux için İndirin (.deb x64)" /></a>
-  <a href="https://discord.gg/YH86b2P8"><img src="https://img.shields.io/badge/Discord-Join-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord" /></a>
+  <a href="https://discord.gg/kg5Nekpm"><img src="https://img.shields.io/badge/Discord-Join-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord" /></a>
 </p>
 
 # Accomplish™ - Açık Kaynaklı AI Masaüstü Ajanı
