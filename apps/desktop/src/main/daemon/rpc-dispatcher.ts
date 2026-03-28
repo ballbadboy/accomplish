@@ -1,5 +1,5 @@
 /**
- * Accomplish Daemon RPC Dispatcher
+ * SmartClaim by Dr.K Daemon RPC Dispatcher
  *
  * Manages the method handler registry and dispatches incoming JSON-RPC 2.0
  * requests to the appropriate handler. Extracted from server.ts to keep

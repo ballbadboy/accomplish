@@ -76,7 +76,7 @@ export function disableAutoStart(): void {
 // Linux: systemd user service
 // =============================================================================
 
-const SYSTEMD_SERVICE_NAME = 'accomplish-daemon.service';
+const SYSTEMD_SERVICE_NAME = 'smartclaim-daemon.service';
 
 function getSystemdServiceDir(): string {
   const configDir = process.env.XDG_CONFIG_HOME || path.join(process.env.HOME || '~', '.config');
@@ -92,7 +92,7 @@ function getServiceContent(): string {
 
   return [
     '[Unit]',
-    'Description=Accomplish AI Daemon',
+    'Description=SmartClaim by Dr.K Daemon',
     'After=default.target',
     '',
     '[Service]',

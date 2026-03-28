@@ -1,5 +1,5 @@
 /**
- * Accomplish Daemon Socket Server
+ * SmartClaim by Dr.K Daemon Socket Server
  *
  * Listens on a local Unix socket (macOS/Linux) or named pipe (Windows) and
  * accepts JSON-RPC 2.0 commands from external clients (CLI, scheduled tasks,
@@ -67,7 +67,7 @@ export { _registerMethod as registerMethod };
 
 export function getSocketPath(): string {
   if (process.platform === 'win32') {
-    return '\\\\.\\pipe\\accomplish-daemon';
+    return '\\\\.\\pipe\\smartclaim-daemon';
   }
   return path.join(app.getPath('userData'), 'daemon.sock');
 }

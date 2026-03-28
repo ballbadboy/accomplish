@@ -13,11 +13,11 @@ import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 
-const APP_DATA_NAME = 'Accomplish';
+const APP_DATA_NAME = 'SmartClaim by Dr.K';
 app.setPath('userData', path.join(app.getPath('appData'), APP_DATA_NAME));
 
 if (process.platform === 'win32') {
-  app.setAppUserModelId('ai.accomplish.desktop');
+  app.setAppUserModelId('com.drk.smartclaim');
 }
 
 import { registerIPCHandlers } from './ipc/handlers';
@@ -80,7 +80,7 @@ if (process.env.CLEAN_START === '1') {
   logMain('INFO', '[Clean Mode] All singletons reset');
 }
 
-app.setName('Accomplish');
+app.setName('SmartClaim by Dr.K');
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -127,7 +127,7 @@ function createWindow() {
     height: 800,
     minWidth: 900,
     minHeight: 600,
-    title: 'Accomplish',
+    title: 'SmartClaim by Dr.K',
     icon: icon.isEmpty() ? undefined : icon,
     backgroundColor: nativeTheme.shouldUseDarkColors ? '#171717' : '#f9f9f9',
     titleBarStyle: process.platform === 'darwin' ? 'hiddenInset' : 'default',
@@ -284,8 +284,8 @@ if (!gotTheLock) {
         await dialog.showMessageBox({
           type: 'error',
           title: 'Update Required',
-          message: `This data was created by a newer version of Accomplish (schema v${err.storedVersion}).`,
-          detail: `Your app supports up to schema v${err.appVersion}. Please update Accomplish to continue.`,
+          message: `This data was created by a newer version of SmartClaim by Dr.K (schema v${err.storedVersion}).`,
+          detail: `Your app supports up to schema v${err.appVersion}. Please update SmartClaim by Dr.K to continue.`,
           buttons: ['Quit'],
         });
         app.quit();

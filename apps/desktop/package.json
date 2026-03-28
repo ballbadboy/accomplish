@@ -1,9 +1,9 @@
 {
-  "name": "@accomplish/desktop",
+  "name": "@smartclaim/desktop",
   "version": "0.3.8",
   "private": true,
   "type": "module",
-  "description": "Accomplish Desktop App",
+  "description": "SmartClaim by Dr.K Desktop App",
   "main": "dist-electron/main/index.js",
   "scripts": {
     "postinstall": "node scripts/postinstall.cjs",
@@ -15,7 +15,7 @@
     "dev:remote": "node scripts/dev.cjs --remote",
     "build:mcp-tools:dev": "node scripts/bundle-skills.cjs --mode=dev",
     "build:mcp-tools:package": "node scripts/bundle-skills.cjs --mode=package",
-    "build:base": "pnpm -F @accomplish/web build && tsc && vite build",
+    "build:base": "pnpm -F @smartclaim/web build && tsc && vite build",
     "build": "pnpm build:base && pnpm build:mcp-tools:dev",
     "build:electron": "pnpm build:base && pnpm build:mcp-tools:package && node scripts/package.cjs",
     "build:unpack": "pnpm build:base && pnpm build:mcp-tools:package && node scripts/package.cjs --dir",
@@ -46,7 +46,7 @@
     "test:local-agent": "npx tsx scripts/test-local-agent-cli.ts"
   },
   "dependencies": {
-    "@accomplish_ai/agent-core": "workspace:*",
+    "@smartclaim_ai/agent-core": "workspace:*",
     "@aws-sdk/client-bedrock": "^3.971.0",
     "@aws-sdk/credential-providers": "^3.971.0",
     "@azure/identity": "^4.13.0",
@@ -96,9 +96,9 @@
   "build": {
     "npmRebuild": false,
     "compression": "normal",
-    "appId": "ai.accomplish.desktop",
-    "productName": "Accomplish (formerly Openwork)",
-    "artifactName": "Accomplish-${version}-${os}-${arch}.${ext}",
+    "appId": "com.drk.smartclaim",
+    "productName": "SmartClaim by Dr.K",
+    "artifactName": "SmartClaim-DrK-${version}-${os}-${arch}.${ext}",
     "directories": {
       "output": "release",
       "buildResources": "resources"
@@ -116,7 +116,7 @@
       "node_modules/json-schema-typed/**",
       "node_modules/atomically/**",
       "node_modules/debounce-fn/**",
-      "!node_modules/@accomplish_ai/**",
+      "!node_modules/@smartclaim_ai/**",
       "node_modules/opencode-linux-x64/**",
       "node_modules/opencode-linux-x64-baseline/**",
       "node_modules/opencode-linux-x64-musl/**",
@@ -233,7 +233,7 @@
       "allowToChangeInstallationDirectory": false,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "Accomplish",
+      "shortcutName": "SmartClaim by Dr.K",
       "runAfterFinish": true,
       "installerIcon": "resources/icon.ico",
       "uninstallerIcon": "resources/icon.ico",

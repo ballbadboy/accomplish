@@ -4,10 +4,10 @@
  * Provides a simple CLI interface for sending commands to the daemon.
  * This script can be invoked directly from the command line:
  *
- *   accomplish-cli schedule "0 9 * * 1-5" "Check email and summarize"
- *   accomplish-cli list-scheduled
- *   accomplish-cli cancel-scheduled sched-abc123
- *   accomplish-cli run "Research open source AI models"
+ *   smartclaim-cli schedule "0 9 * * 1-5" "Check email and summarize"
+ *   smartclaim-cli list-scheduled
+ *   smartclaim-cli cancel-scheduled sched-abc123
+ *   smartclaim-cli run "Research open source AI models"
  *
  * It communicates with the daemon via the DaemonClient.
  * When run from within the Electron app, it uses the in-process getDaemonClient().
@@ -115,7 +115,7 @@ export async function handleCliCommand(args: string[]): Promise<void> {
 function printUsage(): void {
   console.log(
     `
-Accomplish CLI Bridge
+SmartClaim by Dr.K CLI Bridge
 
 Usage:
   schedule "<cron>" "<prompt>"   Schedule a recurring task
