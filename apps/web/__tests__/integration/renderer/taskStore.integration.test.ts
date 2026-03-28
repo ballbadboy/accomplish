@@ -5,14 +5,14 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { STARTUP_STAGES } from '@accomplish_ai/agent-core/common';
+import { STARTUP_STAGES } from '@smartclaim_ai/agent-core/common';
 import type {
   Task,
   TaskConfig,
   TaskStatus,
   TaskMessage,
   TaskResult,
-} from '@accomplish_ai/agent-core';
+} from '@smartclaim_ai/agent-core';
 
 // Helper to create a mock task
 function createMockTask(
@@ -844,12 +844,12 @@ describe('taskStore Integration', () => {
             id: 'perm-1',
             taskId: 'task-1',
             type: 'file',
-          } as import('@accomplish_ai/agent-core/common').PermissionRequest,
+          } as import('@smartclaim_ai/agent-core/common').PermissionRequest,
           'task-2': {
             id: 'perm-2',
             taskId: 'task-2',
             type: 'file',
-          } as import('@accomplish_ai/agent-core/common').PermissionRequest,
+          } as import('@smartclaim_ai/agent-core/common').PermissionRequest,
         },
         setupProgress: 'Downloading dependencies...',
         setupProgressTaskId: 'task-2',
@@ -911,7 +911,7 @@ describe('taskStore Integration', () => {
             id: 'perm-1',
             taskId: 'task-1',
             type: 'file',
-          } as import('@accomplish_ai/agent-core/common').PermissionRequest,
+          } as import('@smartclaim_ai/agent-core/common').PermissionRequest,
         },
         setupProgress: 'Downloading dependencies...',
         setupProgressTaskId: 'task-1',
@@ -982,7 +982,7 @@ describe('taskStore Integration', () => {
             id: 'perm-1',
             taskId: 'task-1',
             type: 'file',
-          } as import('@accomplish_ai/agent-core/common').PermissionRequest,
+          } as import('@smartclaim_ai/agent-core/common').PermissionRequest,
         },
         setupProgress: 'Downloading dependencies...',
         setupProgressTaskId: 'task-1',
@@ -1042,7 +1042,7 @@ describe('taskStore Integration', () => {
             id: 'perm-1',
             taskId: 'task-1',
             type: 'file',
-          } as import('@accomplish_ai/agent-core/common').PermissionRequest,
+          } as import('@smartclaim_ai/agent-core/common').PermissionRequest,
         },
         setupProgress: 'Downloading...',
         setupProgressTaskId: 'task-1',
@@ -1076,7 +1076,7 @@ describe('taskStore Integration', () => {
             id: 'perm-1',
             taskId: 'task-1',
             type: 'file',
-          } as import('@accomplish_ai/agent-core/common').PermissionRequest,
+          } as import('@smartclaim_ai/agent-core/common').PermissionRequest,
         },
       });
       mockAccomplish.respondToPermission.mockResolvedValueOnce(undefined);

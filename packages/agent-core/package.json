@@ -1,5 +1,5 @@
 {
-  "name": "@smartclaim_ai/agent-core",
+  "name": "@accomplish_ai/agent-core",
   "version": "0.4.0",
   "private": true,
   "description": "Core logic for SmartClaim by Dr.K - OpenCode adapter, storage, providers, MCP tools, and skills",
