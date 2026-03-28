@@ -1,6 +1,6 @@
 ---
 name: batch-claim-optimizer
-description: "ตรวจสอบและ optimize claims ทั้ง รพ. พร้อมกัน — upload CSV แล้ว AI ตรวจทุกเคส เรียงตามมูลค่า ใช้ skill นี้เมื่อ: batch check, optimize ทั้งล็อต, upload CSV claims, ตรวจก่อนส่งเบิกทั้งเดือน, เพิ่ม RW, CC/MCC optimization batch, ตรวจ claims ทั้งหมด"
+description: 'ตรวจสอบและ optimize claims ทั้ง รพ. พร้อมกัน — upload CSV แล้ว AI ตรวจทุกเคส เรียงตามมูลค่า ใช้ skill นี้เมื่อ: batch check, optimize ทั้งล็อต, upload CSV claims, ตรวจก่อนส่งเบิกทั้งเดือน, เพิ่ม RW, CC/MCC optimization batch, ตรวจ claims ทั้งหมด'
 ---
 
 # Batch Claim Optimizer — ตรวจ + Optimize ทั้ง รพ.
@@ -8,6 +8,7 @@ description: "ตรวจสอบและ optimize claims ทั้ง รพ
 Upload CSV/Excel → AI ตรวจทุกเคส → เรียงตาม revenue impact
 
 ## วิธีใช้
+
 1. รับ CSV/Excel (HN, AN, PDx, SDx, Procedures, DRG, RW)
 2. ตรวจ validation ทุกเคส
 3. หา CC/MCC optimization opportunities
@@ -15,6 +16,7 @@ Upload CSV/Excel → AI ตรวจทุกเคส → เรียงตา
 5. สรุป: total claims, issues, potential RW increase, estimated revenue gain
 
 ## Output
+
 ```
 ═══════════════════════════════════════════════
   BATCH OPTIMIZATION SUMMARY
@@ -32,8 +34,9 @@ Upload CSV/Excel → AI ตรวจทุกเคส → เรียงตา
 ```
 
 ## References
-| File | ใช้เมื่อ |
-|------|---------|
-| `references/batch-process-guide.md` | วิธี process CSV |
-| `references/optimization-patterns.md` | CC/MCC patterns |
-| `references/priority-scoring.md` | วิธีเรียงลำดับ |
+
+| File                                  | ใช้เมื่อ         |
+| ------------------------------------- | ---------------- |
+| `references/batch-process-guide.md`   | วิธี process CSV |
+| `references/optimization-patterns.md` | CC/MCC patterns  |
+| `references/priority-scoring.md`      | วิธีเรียงลำดับ   |

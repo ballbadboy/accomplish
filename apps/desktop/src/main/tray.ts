@@ -85,7 +85,8 @@ export function updateTaskCount(count: number, mainWindow: BrowserWindow | null)
   activeTaskCount = count;
   if (tray && !tray.isDestroyed()) {
     tray.setContextMenu(buildContextMenu(mainWindow));
-    const tooltip = count > 0 ? `SmartClaim by Dr.K — ${count} task(s) running` : 'SmartClaim by Dr.K';
+    const tooltip =
+      count > 0 ? `SmartClaim by Dr.K — ${count} task(s) running` : 'SmartClaim by Dr.K';
     tray.setToolTip(tooltip);
   }
 }

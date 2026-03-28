@@ -1,6 +1,6 @@
 ---
 name: claim-knowledge-updater
-description: "อัพเดตความรู้ให้ระบบ Hospital Claim AI — รับไฟล์ใหม่ (PDF/markdown/YouTube) แล้วกระจายไปอัพเดตทุกจุดอัตโนมัติ (knowledge, skill references, core modules, SKILL.md) ใช้ skill นี้เมื่อ: เพิ่มความรู้, update knowledge, อัพเดตหลักเกณฑ์, เพิ่ม deny code, เพิ่ม DRG, เพิ่มแผนกใหม่, อัพเดต base rate, เพิ่ม ICD code"
+description: 'อัพเดตความรู้ให้ระบบ Hospital Claim AI — รับไฟล์ใหม่ (PDF/markdown/YouTube) แล้วกระจายไปอัพเดตทุกจุดอัตโนมัติ (knowledge, skill references, core modules, SKILL.md) ใช้ skill นี้เมื่อ: เพิ่มความรู้, update knowledge, อัพเดตหลักเกณฑ์, เพิ่ม deny code, เพิ่ม DRG, เพิ่มแผนกใหม่, อัพเดต base rate, เพิ่ม ICD code'
 ---
 
 # Claim Knowledge Updater
@@ -19,7 +19,9 @@ description: "อัพเดตความรู้ให้ระบบ Hospi
 ## Workflow
 
 ### Step 1: ตรวจสอบ Input
+
 รับจากผู้ใช้:
+
 - ไฟล์ใหม่ที่เพิ่มเข้ามา (path)
 - หรือ YouTube URL
 - หรือข้อความอธิบาย
@@ -28,19 +30,20 @@ description: "อัพเดตความรู้ให้ระบบ Hospi
 
 ### Step 2: จำแนกประเภทความรู้
 
-| ประเภท | ตรวจจาก | ตัวอย่าง |
-|--------|---------|---------|
-| **หลักเกณฑ์ สปสช.** | ประกาศ, ระเบียบ, base rate, งบ | ปีงบ 70 base rate ใหม่ |
-| **Deny code / วิธีแก้** | C-code, deny, reject, ปฏิเสธ | C-code ใหม่, deny pattern |
-| **ICD / DRG** | ICD-10, ICD-9, DRG, RW, grouper | DRG v7, ICD-10-TM 2026 |
-| **Clinical criteria** | guideline, criteria, protocol | ACC/AHA update |
-| **Drug catalog** | ยา, TMT, GPUID, drug | Drug Catalog update |
+| ประเภท                  | ตรวจจาก                          | ตัวอย่าง                  |
+| ----------------------- | -------------------------------- | ------------------------- |
+| **หลักเกณฑ์ สปสช.**     | ประกาศ, ระเบียบ, base rate, งบ   | ปีงบ 70 base rate ใหม่    |
+| **Deny code / วิธีแก้** | C-code, deny, reject, ปฏิเสธ     | C-code ใหม่, deny pattern |
+| **ICD / DRG**           | ICD-10, ICD-9, DRG, RW, grouper  | DRG v7, ICD-10-TM 2026    |
+| **Clinical criteria**   | guideline, criteria, protocol    | ACC/AHA update            |
+| **Drug catalog**        | ยา, TMT, GPUID, drug             | Drug Catalog update       |
 | **Device / Instrument** | stent, implant, อุปกรณ์, GPO VMI | Instrument catalog update |
-| **แผนกใหม่** | แผนกที่ยังไม่มี skill | rehab, ODS, MIS |
+| **แผนกใหม่**            | แผนกที่ยังไม่มี skill            | rehab, ODS, MIS           |
 
 ### Step 3: กระจายอัพเดตตามประเภท
 
 #### A) หลักเกณฑ์ สปสช.
+
 ```
 1. สรุป → references/nhso-rules/[ชื่อ].md
 2. อัพเดต knowledge/core-rules.md (ถ้า base rate/งบ)
@@ -51,6 +54,7 @@ description: "อัพเดตความรู้ให้ระบบ Hospi
 ```
 
 #### B) Deny code / วิธีแก้
+
 ```
 1. เพิ่ม → knowledge/deny-fixes.md
 2. เพิ่ม → core/deny_analyzer.py → DENY_CODE_DB dict
@@ -59,6 +63,7 @@ description: "อัพเดตความรู้ให้ระบบ Hospi
 ```
 
 #### C) ICD / DRG
+
 ```
 1. เพิ่ม → skills/cathlab-claim-checker/references/cardiac-codes.md (ICD)
 2. เพิ่ม → skills/cathlab-claim-checker/references/drg-cardiac.md (DRG)
@@ -69,6 +74,7 @@ description: "อัพเดตความรู้ให้ระบบ Hospi
 ```
 
 #### D) Drug / Device catalog
+
 ```
 1. เพิ่ม → references/nhso-rules/drug-catalog-spec.md หรือ instrument-catalog.md
 2. เพิ่ม → skills/*/references/instrument-catalog.md
@@ -76,6 +82,7 @@ description: "อัพเดตความรู้ให้ระบบ Hospi
 ```
 
 #### E) YouTube สปสช.
+
 ```
 1. /youtube-skill-extractor [URL]
 2. สกัด → references/youtube-extracted/[videoID]/
@@ -84,6 +91,7 @@ description: "อัพเดตความรู้ให้ระบบ Hospi
 ```
 
 #### F) แผนกใหม่
+
 ```
 1. สร้าง knowledge/[แผนก].md
 2. สร้าง references/nhso-rules/[แผนก].md
@@ -93,11 +101,14 @@ description: "อัพเดตความรู้ให้ระบบ Hospi
 ```
 
 ### Step 4: Sync
+
 ทุกครั้งที่แก้ skill → sync ทั้ง 2 ที่:
+
 - **Global:** `~/.claude/skills/[skill]/`
 - **Project-local:** `skills/[skill]/`
 
 ### Step 5: สรุปผล
+
 แสดงสรุปว่าอัพเดตไฟล์ไหนบ้าง:
 
 ```

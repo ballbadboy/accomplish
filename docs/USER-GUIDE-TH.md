@@ -25,16 +25,16 @@
 
 ### สิ่งที่ระบบทำได้
 
-| ความสามารถ | รายละเอียด |
-|-----------|-----------|
-| ตรวจเคสก่อนส่งเบิก | ตรวจ 8 checkpoints, ICD codes, devices, timing |
-| วิเคราะห์ Deny | หาสาเหตุ + แนะนำวิธีแก้ + ประเมินโอกาส appeal |
-| ร่างหนังสืออุทธรณ์ | สร้าง Word ภาษาราชการไทย พร้อมส่ง |
-| Auto-code ICD | แปลง clinical notes → ICD-10 + ICD-9 อัตโนมัติ |
-| Batch ตรวจทั้งเดือน | ตรวจทุกเคสจาก CSV/Excel พร้อมกัน |
-| ทำนาย Deny | คำนวณโอกาสถูก deny ก่อนส่ง |
-| Dashboard สำหรับหัวหน้า | Revenue, Deny rate, KPI รายเดือน |
-| รองรับ 8 แผนก | Cath Lab, OR, ICU, ER, Chemo, Dialysis, OPD, Rehab |
+| ความสามารถ              | รายละเอียด                                         |
+| ----------------------- | -------------------------------------------------- |
+| ตรวจเคสก่อนส่งเบิก      | ตรวจ 8 checkpoints, ICD codes, devices, timing     |
+| วิเคราะห์ Deny          | หาสาเหตุ + แนะนำวิธีแก้ + ประเมินโอกาส appeal      |
+| ร่างหนังสืออุทธรณ์      | สร้าง Word ภาษาราชการไทย พร้อมส่ง                  |
+| Auto-code ICD           | แปลง clinical notes → ICD-10 + ICD-9 อัตโนมัติ     |
+| Batch ตรวจทั้งเดือน     | ตรวจทุกเคสจาก CSV/Excel พร้อมกัน                   |
+| ทำนาย Deny              | คำนวณโอกาสถูก deny ก่อนส่ง                         |
+| Dashboard สำหรับหัวหน้า | Revenue, Deny rate, KPI รายเดือน                   |
+| รองรับ 8 แผนก           | Cath Lab, OR, ICU, ER, Chemo, Dialysis, OPD, Rehab |
 
 ### แผนกที่รองรับ
 
@@ -53,25 +53,26 @@
 
 ### Hardware ขั้นต่ำ
 
-| รายการ | ขั้นต่ำ | แนะนำ |
-|--------|---------|-------|
-| CPU | Apple M1 / Intel i5 | Apple M2+ / Intel i7+ |
-| RAM | 8 GB | 16 GB |
-| พื้นที่ดิสก์ | 2 GB | 5 GB |
-| จอ | 1280x720 | 1920x1080+ |
+| รายการ       | ขั้นต่ำ             | แนะนำ                 |
+| ------------ | ------------------- | --------------------- |
+| CPU          | Apple M1 / Intel i5 | Apple M2+ / Intel i7+ |
+| RAM          | 8 GB                | 16 GB                 |
+| พื้นที่ดิสก์ | 2 GB                | 5 GB                  |
+| จอ           | 1280x720            | 1920x1080+            |
 
 ### Software ที่ต้องมี
 
-| Software | Version | ดาวน์โหลด |
-|----------|---------|----------|
-| macOS | 11.0 (Big Sur) ขึ้นไป | - |
-| Docker Desktop | 4.0+ | docker.com |
-| Node.js | 20+ | nodejs.org |
-| pnpm | 9+ | `npm install -g pnpm` |
+| Software       | Version               | ดาวน์โหลด             |
+| -------------- | --------------------- | --------------------- |
+| macOS          | 11.0 (Big Sur) ขึ้นไป | -                     |
+| Docker Desktop | 4.0+                  | docker.com            |
+| Node.js        | 20+                   | nodejs.org            |
+| pnpm           | 9+                    | `npm install -g pnpm` |
 
 ### API Key (สำหรับ AI Analysis)
 
 ต้องมี API Key จาก AI Provider อย่างน้อย 1 ตัว:
+
 - **Anthropic** (Claude) — แนะนำ
 - **OpenAI** (GPT-4)
 - **Google AI** (Gemini)
@@ -169,11 +170,11 @@ pnpm dev
 2. ไปที่ **Providers**
 3. เลือก Provider ที่ต้องการ:
 
-| Provider | วิธีตั้งค่า |
-|----------|-----------|
-| **Anthropic** (แนะนำ) | ใส่ API Key จาก console.anthropic.com |
-| **OpenAI** | ใส่ API Key จาก platform.openai.com |
-| **Google AI** | ใส่ API Key จาก aistudio.google.com |
+| Provider                | วิธีตั้งค่า                                        |
+| ----------------------- | -------------------------------------------------- |
+| **Anthropic** (แนะนำ)   | ใส่ API Key จาก console.anthropic.com              |
+| **OpenAI**              | ใส่ API Key จาก platform.openai.com                |
+| **Google AI**           | ใส่ API Key จาก aistudio.google.com                |
 | **Ollama** (ฟรี, local) | ติดตั้ง Ollama แล้วดึง model: `ollama pull llama3` |
 
 4. กด **Test Connection** → ถ้าเห็น "Connected" = สำเร็จ
@@ -188,6 +189,7 @@ pnpm dev
 ### 4.4 ตั้งค่า Backend Connection (Optional)
 
 ถ้าติดตั้ง Backend แล้ว ต้องบอก AI ว่า Backend อยู่ที่ไหน:
+
 - พิมพ์ใน chat: `Backend อยู่ที่ http://localhost:8001`
 - AI จะจำไว้และใช้ตลอด session
 
@@ -219,15 +221,15 @@ pnpm dev
 
 **ตัวอย่างคำสั่ง:**
 
-| คำสั่ง | สิ่งที่ AI ทำ |
-|--------|-------------|
-| `ตรวจเคส Cath Lab I21.0 PCI 36.06` | ตรวจ 8 checkpoints + แนะนำ CC/MCC |
-| `เคส AN 69-03556 โดน deny HC09` | วิเคราะห์สาเหตุ + แนะนำวิธีแก้ |
-| `สร้าง appeal สำหรับ deny HC09` | ร่างหนังสืออุทธรณ์ภาษาราชการ |
-| `code ให้หน่อย: ผู้ป่วยชาย 65 ปี STEMI` | แปลง clinical notes → ICD codes |
-| `ตรวจเคสทั้งเดือน มี.ค.` | Batch ตรวจทุกเคสจาก HIS/CSV |
-| `ทำนาย deny เคส I21.0 + 36.06` | ประเมินโอกาสถูก deny 0-100% |
-| `สร้าง board report เดือน มี.ค.` | สร้างรายงานสำหรับ ผอ. |
+| คำสั่ง                                  | สิ่งที่ AI ทำ                     |
+| --------------------------------------- | --------------------------------- |
+| `ตรวจเคส Cath Lab I21.0 PCI 36.06`      | ตรวจ 8 checkpoints + แนะนำ CC/MCC |
+| `เคส AN 69-03556 โดน deny HC09`         | วิเคราะห์สาเหตุ + แนะนำวิธีแก้    |
+| `สร้าง appeal สำหรับ deny HC09`         | ร่างหนังสืออุทธรณ์ภาษาราชการ      |
+| `code ให้หน่อย: ผู้ป่วยชาย 65 ปี STEMI` | แปลง clinical notes → ICD codes   |
+| `ตรวจเคสทั้งเดือน มี.ค.`                | Batch ตรวจทุกเคสจาก HIS/CSV       |
+| `ทำนาย deny เคส I21.0 + 36.06`          | ประเมินโอกาสถูก deny 0-100%       |
+| `สร้าง board report เดือน มี.ค.`        | สร้างรายงานสำหรับ ผอ.             |
 
 ### 5.3 การแนบไฟล์
 
@@ -235,11 +237,13 @@ pnpm dev
 **ไม่รองรับ (ยัง):** .xlsx, .xls, .docx (ใช้วิธีบอก path แทน)
 
 **วิธีใช้กับ Excel:**
+
 ```
 วิเคราะห์ไฟล์ /Users/ballbadboy/Downloads/eclaim_report.xlsx
 ```
 
 **วิธีใช้กับ CSV:**
+
 - ลากไฟล์ .csv เข้า chat ได้โดยตรง
 
 ---
@@ -248,48 +252,48 @@ pnpm dev
 
 ### กลุ่ม A: ตรวจเคสรายแผนก (7 ตัว)
 
-| # | Skill | คำสั่ง | ใช้เมื่อ |
-|---|-------|--------|---------|
-| 1 | **Cath Lab Checker** | `cathlab-claim-checker` | เคสสวนหัวใจ PCI Stent |
-| 2 | **Cath Lab Portable** | `cathlab-claim-ai` | เวอร์ชันรวมครบจบในตัว |
-| 3 | **OR Surgery Checker** | `or-surgery-checker` | เคสผ่าตัดทุกชนิด |
-| 4 | **ICU/NICU Checker** | `icu-checker` | เคสผู้ป่วยวิกฤต |
-| 5 | **ER/UCEP Checker** | `er-ucep-checker` | เคสฉุกเฉิน |
-| 6 | **Chemo Checker** | `chemo-checker` | เคสเคมีบำบัด |
-| 7 | **Dialysis Checker** | `dialysis-checker` | เคสฟอกไต |
+| #   | Skill                  | คำสั่ง                  | ใช้เมื่อ              |
+| --- | ---------------------- | ----------------------- | --------------------- |
+| 1   | **Cath Lab Checker**   | `cathlab-claim-checker` | เคสสวนหัวใจ PCI Stent |
+| 2   | **Cath Lab Portable**  | `cathlab-claim-ai`      | เวอร์ชันรวมครบจบในตัว |
+| 3   | **OR Surgery Checker** | `or-surgery-checker`    | เคสผ่าตัดทุกชนิด      |
+| 4   | **ICU/NICU Checker**   | `icu-checker`           | เคสผู้ป่วยวิกฤต       |
+| 5   | **ER/UCEP Checker**    | `er-ucep-checker`       | เคสฉุกเฉิน            |
+| 6   | **Chemo Checker**      | `chemo-checker`         | เคสเคมีบำบัด          |
+| 7   | **Dialysis Checker**   | `dialysis-checker`      | เคสฟอกไต              |
 
 ### กลุ่ม B: ตรวจเคสทั่วไป (3 ตัว)
 
-| # | Skill | คำสั่ง | ใช้เมื่อ |
-|---|-------|--------|---------|
-| 8 | **Claim Validator** | `claim-validator` | ตรวจเคสทุกแผนก 8 checkpoints |
-| 9 | **OPD/NCD Checker** | `opd-ncd-checker` | เคสผู้ป่วยนอก/โรคเรื้อรัง |
-| 10 | **Batch Optimizer** | `batch-claim-optimizer` | ตรวจทั้งเดือนจาก CSV |
+| #   | Skill               | คำสั่ง                  | ใช้เมื่อ                     |
+| --- | ------------------- | ----------------------- | ---------------------------- |
+| 8   | **Claim Validator** | `claim-validator`       | ตรวจเคสทุกแผนก 8 checkpoints |
+| 9   | **OPD/NCD Checker** | `opd-ncd-checker`       | เคสผู้ป่วยนอก/โรคเรื้อรัง    |
+| 10  | **Batch Optimizer** | `batch-claim-optimizer` | ตรวจทั้งเดือนจาก CSV         |
 
 ### กลุ่ม C: วิเคราะห์ Deny + อุทธรณ์ (3 ตัว)
 
-| # | Skill | คำสั่ง | ใช้เมื่อ |
-|---|-------|--------|---------|
-| 11 | **Deny Analyzer** | `deny-analyzer` | วิเคราะห์สาเหตุ deny |
-| 12 | **Deny Predictor** | `deny-predictor` | ทำนายโอกาสถูก deny |
-| 13 | **Appeal Drafter** | `appeal-drafter` | ร่างหนังสืออุทธรณ์ |
+| #   | Skill              | คำสั่ง           | ใช้เมื่อ             |
+| --- | ------------------ | ---------------- | -------------------- |
+| 11  | **Deny Analyzer**  | `deny-analyzer`  | วิเคราะห์สาเหตุ deny |
+| 12  | **Deny Predictor** | `deny-predictor` | ทำนายโอกาสถูก deny   |
+| 13  | **Appeal Drafter** | `appeal-drafter` | ร่างหนังสืออุทธรณ์   |
 
 ### กลุ่ม D: Coding + AI (3 ตัว)
 
-| # | Skill | คำสั่ง | ใช้เมื่อ |
-|---|-------|--------|---------|
-| 14 | **Smart Coder** | `smart-coder` | แปลง notes → ICD codes อัตโนมัติ |
-| 15 | **ICD Coding** | `icd-coding` | ช่วย coding ICD-10/ICD-9 |
-| 16 | **Knowledge Updater** | `claim-knowledge-updater` | อัพเดตฐานความรู้ |
+| #   | Skill                 | คำสั่ง                    | ใช้เมื่อ                         |
+| --- | --------------------- | ------------------------- | -------------------------------- |
+| 14  | **Smart Coder**       | `smart-coder`             | แปลง notes → ICD codes อัตโนมัติ |
+| 15  | **ICD Coding**        | `icd-coding`              | ช่วย coding ICD-10/ICD-9         |
+| 16  | **Knowledge Updater** | `claim-knowledge-updater` | อัพเดตฐานความรู้                 |
 
 ### กลุ่ม E: Management + Reports (4 ตัว)
 
-| # | Skill | คำสั่ง | ใช้เมื่อ |
-|---|-------|--------|---------|
-| 17 | **Revenue Tracker** | `revenue-tracker` | ติดตามรายได้ claim |
-| 18 | **Board Report** | `board-report-generator` | สร้างรายงาน ผอ./กรรมการ |
-| 19 | **Financial Simulator** | `financial-simulator` | จำลอง what-if การเงิน |
-| 20 | **Drug Cost Optimizer** | `drug-cost-optimizer` | ลดต้นทุนยา original→generic |
+| #   | Skill                   | คำสั่ง                   | ใช้เมื่อ                    |
+| --- | ----------------------- | ------------------------ | --------------------------- |
+| 17  | **Revenue Tracker**     | `revenue-tracker`        | ติดตามรายได้ claim          |
+| 18  | **Board Report**        | `board-report-generator` | สร้างรายงาน ผอ./กรรมการ     |
+| 19  | **Financial Simulator** | `financial-simulator`    | จำลอง what-if การเงิน       |
+| 20  | **Drug Cost Optimizer** | `drug-cost-optimizer`    | ลดต้นทุนยา original→generic |
 
 ---
 
@@ -300,6 +304,7 @@ pnpm dev
 **เมื่อไหร่ใช้:** มีเคส PCI/Stent/Cath ที่จะส่งเบิก สปสช.
 
 **วิธีใช้:**
+
 ```
 ตรวจเคส Cath Lab
 AN: 69-03556
@@ -314,6 +319,7 @@ Discharge: 5/3/69
 ```
 
 **ผลลัพธ์ที่ได้:**
+
 ```
 Score: 85/100 ✅ พร้อมส่งเบิก
 
@@ -337,6 +343,7 @@ DRG: MDC05 PCI w/ CC → RW 5.2 → ≈ ฿62,400
 **เมื่อไหร่ใช้:** มีเคสผ่าตัด (Ortho, Neuro, GI, GYN, etc.)
 
 **วิธีใช้:**
+
 ```
 ตรวจเคสผ่าตัด
 AN: 69-04100
@@ -353,6 +360,7 @@ Discharge: 13/3/69
 **เมื่อไหร่ใช้:** เคสถูก สปสช. deny แล้ว ต้องการรู้สาเหตุและวิธีแก้
 
 **วิธีใช้:**
+
 ```
 เคส AN 69-03556 โดน deny code HC09
 PDx: I21.0
@@ -360,6 +368,7 @@ Procedures: 36.06
 ```
 
 **ผลลัพธ์:**
+
 ```
 Deny Code: HC09
 ความหมาย: Serial number อุปกรณ์ไม่ตรง GPO VMI record
@@ -385,6 +394,7 @@ Deny Code: HC09
 **เมื่อไหร่ใช้:** ต้องการหนังสืออุทธรณ์พร้อมส่ง สปสช.
 
 **วิธีใช้:**
+
 ```
 สร้าง appeal
 AN: 69-03556
@@ -401,6 +411,7 @@ Deny code: HC09
 **เมื่อไหร่ใช้:** มี clinical notes ต้องการแปลงเป็น ICD codes
 
 **วิธีใช้:**
+
 ```
 code ให้หน่อย:
 ผู้ป่วยชาย 65 ปี มาด้วยเจ็บหน้าอกรุนแรง 2 ชม. ก่อนมา
@@ -412,6 +423,7 @@ Post-PCI develop AKI Cr 2.8
 ```
 
 **ผลลัพธ์:**
+
 ```
 Principal Dx: I21.0 — STEMI anterior wall
 Secondary Dx:
@@ -436,6 +448,7 @@ Estimated RW: 5.8
 **เมื่อไหร่ใช้:** ต้องการรู้ก่อนส่งว่าเคสจะถูก deny หรือไม่
 
 **วิธีใช้:**
+
 ```
 ทำนาย deny
 PDx: I21.0
@@ -447,6 +460,7 @@ CC/MCC: E11.9
 ```
 
 **ผลลัพธ์:**
+
 ```
 Deny Probability: 12% (ต่ำ — ส่งได้)
 
@@ -467,17 +481,20 @@ Risk Factors:
 **เมื่อไหร่ใช้:** ต้องการตรวจเคสทั้งเดือนก่อนส่ง FDH
 
 **วิธีใช้:**
+
 ```
 ตรวจเคสทั้งเดือนจากไฟล์
 /Users/ballbadboy/Downloads/eclaim_march.xlsx
 ```
 
 หรือ:
+
 ```
 batch check เดือน มี.ค. 69 แผนก Cath Lab
 ```
 
 **ผลลัพธ์:**
+
 ```
 Batch Results — มี.ค. 2569
 
@@ -503,6 +520,7 @@ Priority:
 **เมื่อไหร่ใช้:** ต้องการรายงานประจำเดือนสำหรับ ผอ./กรรมการ
 
 **วิธีใช้:**
+
 ```
 สร้าง board report เดือน มี.ค. 2569
 แผนก: Cath Lab
@@ -514,6 +532,7 @@ Priority:
 **เมื่อไหร่ใช้:** ต้องการรู้ว่า claim ที่ส่งไป ได้เงินแล้วหรือยัง
 
 **วิธีใช้:**
+
 ```
 ติดตามรายได้เดือน มี.ค.
 ```
@@ -523,6 +542,7 @@ Priority:
 **เมื่อไหร่ใช้:** ต้องการรู้ว่า "ถ้าเปลี่ยน X จะกระทบ Y อย่างไร"
 
 **วิธีใช้:**
+
 ```
 ถ้าเพิ่มเคส PCI จาก 10 เป็น 15 ต่อเดือน รายได้จะเพิ่มเท่าไหร่
 ```
@@ -536,6 +556,7 @@ Priority:
 **เมื่อไหร่ใช้:** ต้องการลดต้นทุนยาโดย switch จาก original → generic
 
 **วิธีใช้:**
+
 ```
 วิเคราะห์ต้นทุนยา Cath Lab
 ยาที่ใช้: Clopidogrel, Atorvastatin, Enoxaparin
@@ -642,24 +663,31 @@ sqlite3 "$HOME/Library/Application Support/Accomplish/accomplish.db" \
 ## 10. คำถามที่พบบ่อย
 
 ### Q: ใช้ได้กี่เครื่อง?
+
 A: ขึ้นอยู่กับ license — ระบบรองรับ IP lock สำหรับ multi-hospital deployment
 
 ### Q: ข้อมูลผู้ป่วยปลอดภัยมั้ย?
+
 A: ข้อมูล PHI ไม่ถูกส่งไป cloud — Rule Engine ตรวจบน local, AI ได้รับแค่ ICD codes (ไม่มีชื่อ/HN)
 
 ### Q: ต้องต่อ internet มั้ย?
+
 A: ต้อง สำหรับ AI analysis (API call) แต่ Rule Engine ทำงาน offline ได้
 
 ### Q: รองรับ HIS อะไรบ้าง?
+
 A: SSB (Smart Hospital), HOSxP (MySQL), CSV import — เพิ่มได้ผ่าน connector plugin
 
 ### Q: อัพเดต knowledge ยังไง?
+
 A: ใช้ skill `claim-knowledge-updater` — ป้อนไฟล์ PDF/markdown/YouTube แล้วระบบอัพเดตให้อัตโนมัติ
 
 ### Q: กฎ สปสช. เปลี่ยน ต้องทำอะไร?
+
 A: ใช้ `claim-knowledge-updater` อัพเดต knowledge files → ทุก skill จะใช้กฎใหม่ทันที
 
 ### Q: ราคาเท่าไหร่?
+
 A: ติดต่อ Dr.K — ขาย license per module per hospital
 
 ---
@@ -667,9 +695,10 @@ A: ติดต่อ Dr.K — ขาย license per module per hospital
 ## ติดต่อ
 
 **SmartClaim by Dr.K**
+
 - GitHub: github.com/ballbadboy/accomplish
 - Developer: Dr.K
 
 ---
 
-*Copyright 2026 Dr.K. All rights reserved.*
+_Copyright 2026 Dr.K. All rights reserved._

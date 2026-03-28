@@ -9,6 +9,7 @@ description: ร่างหนังสืออุทธรณ์ claim ถู
 > อ้างอิงหลักเกณฑ์ทางการ + เหตุผล clinical + เอกสารประกอบ
 
 ## Trigger Keywords
+
 อุทธรณ์, appeal, ร่างหนังสือ, ขออุทธรณ์, ทบทวน, ส่งใหม่, ขอทบทวน, PPFS, eMA
 
 ---
@@ -16,7 +17,9 @@ description: ร่างหนังสืออุทธรณ์ claim ถู
 ## Workflow
 
 ### Step 1: รับข้อมูล
+
 รับจาก deny-analyzer หรือถามผู้ใช้:
+
 - ข้อมูลผู้ป่วย: HN, AN, ชื่อ, วันที่ admit/discharge
 - การวินิจฉัย: PDx + SDx (ICD-10) + ชื่อโรค
 - หัตถการ: Procedures (ICD-9-CM) + ชื่อ
@@ -25,19 +28,20 @@ description: ร่างหนังสืออุทธรณ์ claim ถู
 
 ### Step 2: เลือก Appeal Strategy
 
-| สถานการณ์ | Strategy | ช่องทาง |
-|-----------|----------|--------|
-| Data error (C10-C49) | **แก้ไขข้อมูลส่งใหม่** | e-Claim / 43 แฟ้ม + DATA_CORRECT |
-| DRG mismatch | **ขอทบทวนผล DRG** | หนังสือถึง สปสช. เขต |
-| Clinical disagreement | **อุทธรณ์เป็นทางการ** | หนังสือทางการ + เอกสาร clinical |
-| Post-audit deny | **ขอทบทวนผล audit** | ระบบ PPFS / eMA |
-| Late submission | **ขอผ่อนผัน** | หนังสือ + เหตุผล |
+| สถานการณ์             | Strategy               | ช่องทาง                          |
+| --------------------- | ---------------------- | -------------------------------- |
+| Data error (C10-C49)  | **แก้ไขข้อมูลส่งใหม่** | e-Claim / 43 แฟ้ม + DATA_CORRECT |
+| DRG mismatch          | **ขอทบทวนผล DRG**      | หนังสือถึง สปสช. เขต             |
+| Clinical disagreement | **อุทธรณ์เป็นทางการ**  | หนังสือทางการ + เอกสาร clinical  |
+| Post-audit deny       | **ขอทบทวนผล audit**    | ระบบ PPFS / eMA                  |
+| Late submission       | **ขอผ่อนผัน**          | หนังสือ + เหตุผล                 |
 
 ### Step 3: ร่างหนังสือ
 
 ใช้ template จาก `knowledge/deny-fixes.md` + ปรับตาม case:
 
 **กฎการร่าง:**
+
 - ภาษาราชการไทย (สุภาพ, เป็นทางการ)
 - อ้างอิงประกาศ/หลักเกณฑ์ สปสช. ที่เกี่ยวข้อง
 - เหตุผล clinical ชัดเจน (ไม่กำกวม)
@@ -101,17 +105,17 @@ description: ร่างหนังสืออุทธรณ์ claim ถู
 
 เลือกตามประเภท deny:
 
-| Deny Type | เอกสารที่ต้องแนบ |
-|-----------|----------------|
-| **Coding error** | สำเนาเวชระเบียน (OPD/IPD), ผลตรวจ Lab ที่สนับสนุน diagnosis |
-| **DRG mismatch** | สำเนาเวชระเบียน, Operative note, ผล Lab/Imaging |
-| **Device/Drug** | ใบรายงานผลหัตถการ, GPO VMI record, Drug Catalog mapping |
-| **Cath Lab** | Cath report, EKG, Troponin, Echo report |
-| **Surgery** | Operative note, Pathology report |
-| **Chemo** | Protocol, Staging, Lab monitoring |
-| **ICU** | ICU chart, Ventilator settings, ABG |
-| **Dialysis** | Lab (BUN/Cr/eGFR), Dialysis protocol |
-| **Clinical audit** | ทุกอย่างข้างต้น + ใบรับรองแพทย์ |
+| Deny Type          | เอกสารที่ต้องแนบ                                            |
+| ------------------ | ----------------------------------------------------------- |
+| **Coding error**   | สำเนาเวชระเบียน (OPD/IPD), ผลตรวจ Lab ที่สนับสนุน diagnosis |
+| **DRG mismatch**   | สำเนาเวชระเบียน, Operative note, ผล Lab/Imaging             |
+| **Device/Drug**    | ใบรายงานผลหัตถการ, GPO VMI record, Drug Catalog mapping     |
+| **Cath Lab**       | Cath report, EKG, Troponin, Echo report                     |
+| **Surgery**        | Operative note, Pathology report                            |
+| **Chemo**          | Protocol, Staging, Lab monitoring                           |
+| **ICU**            | ICU chart, Ventilator settings, ABG                         |
+| **Dialysis**       | Lab (BUN/Cr/eGFR), Dialysis protocol                        |
+| **Clinical audit** | ทุกอย่างข้างต้น + ใบรับรองแพทย์                             |
 
 ---
 
@@ -119,26 +123,30 @@ description: ร่างหนังสืออุทธรณ์ claim ถู
 
 อ้างอิง `references/youtube-extracted/zSUuHM9Y2Vk/analysis.md`:
 
-| ขั้นตอน | ระยะเวลา |
-|---------|---------|
-| **อุทธรณ์ครั้งที่ 1** | ภายใน 15 วันทำการ หลังรับแจ้ง deny |
-| **สปสช. พิจารณา** | ภายใน 30 วัน |
-| **อุทธรณ์ครั้งที่ 2** | ภายใน 15 วันทำการ หลังรับผลครั้งที่ 1 |
-| **สปสช. พิจารณาสุดท้าย** | ภายใน 30 วัน |
-| **รวมสูงสุด** | **อุทธรณ์ได้ 2 ครั้ง** |
+| ขั้นตอน                  | ระยะเวลา                              |
+| ------------------------ | ------------------------------------- |
+| **อุทธรณ์ครั้งที่ 1**    | ภายใน 15 วันทำการ หลังรับแจ้ง deny    |
+| **สปสช. พิจารณา**        | ภายใน 30 วัน                          |
+| **อุทธรณ์ครั้งที่ 2**    | ภายใน 15 วันทำการ หลังรับผลครั้งที่ 1 |
+| **สปสช. พิจารณาสุดท้าย** | ภายใน 30 วัน                          |
+| **รวมสูงสุด**            | **อุทธรณ์ได้ 2 ครั้ง**                |
 
 ---
 
 ## Appeal ผ่านระบบ
 
 ### PPFS (Post-Payment Financial Statement)
+
 อ้างอิง `references/nhso-rules/eclaim-system-guide.md`:
+
 - เข้าระบบ PPFS
 - Mark Audit → จ่ายเพิ่ม / เรียกคืน
 - ขอทบทวนผ่านระบบ PPFS ได้
 
 ### eMA (Electronic Medical Audit)
+
 อ้างอิง `references/youtube-extracted/nhso-video-index.md` (video `oPLMLOxJhAg`):
+
 - ตรวจสอบผลเวชระเบียนผ่านระบบ eMA
 - ขอทบทวนผ่านระบบ eMA ได้
 
@@ -147,6 +155,7 @@ description: ร่างหนังสืออุทธรณ์ claim ถู
 ## Clinical Justification Templates
 
 ### Template 1: Dx-Proc Mismatch
+
 ```
 1. ผู้ป่วยรายนี้เข้ารับการรักษาด้วยอาการ [อาการ]
    ตรวจพบ [ผลตรวจ] ซึ่งเข้ากับ [diagnosis]
@@ -158,6 +167,7 @@ description: ร่างหนังสืออุทธรณ์ claim ถู
 ```
 
 ### Template 2: CC/MCC Dispute
+
 ```
 1. ผู้ป่วยมีโรคร่วม [comorbidity] ซึ่งมีผลต่อ
    ความรุนแรงของโรคและการรักษา
@@ -168,6 +178,7 @@ description: ร่างหนังสืออุทธรณ์ claim ถู
 ```
 
 ### Template 3: Late Submission
+
 ```
 1. ทางโรงพยาบาลไม่สามารถส่งข้อมูลภายในกำหนดได้
    เนื่องจาก [เหตุผล: ระบบขัดข้อง / เวชระเบียนไม่ครบ / etc.]
@@ -181,14 +192,14 @@ description: ร่างหนังสืออุทธรณ์ claim ถู
 
 ## Knowledge References
 
-| File | ใช้สำหรับ |
-|------|----------|
-| `knowledge/deny-fixes.md` | Appeal template, C-code solutions |
-| `knowledge/core-rules.md` | DRG rules, หลักเกณฑ์อ้างอิง |
-| `references/nhso-rules/eclaim-system-guide.md` | PPFS/Statement/ช่องทาง |
-| `references/youtube-extracted/zSUuHM9Y2Vk/analysis.md` | ปีงบ 69: อุทธรณ์ 2 ครั้ง, 15 วันทำการ |
-| `references/youtube-extracted/R_g1VNkQ65w/analysis.md` | eMA, PPFS ขอทบทวน |
-| `knowledge/[department].md` | Department-specific clinical justification |
+| File                                                   | ใช้สำหรับ                                  |
+| ------------------------------------------------------ | ------------------------------------------ |
+| `knowledge/deny-fixes.md`                              | Appeal template, C-code solutions          |
+| `knowledge/core-rules.md`                              | DRG rules, หลักเกณฑ์อ้างอิง                |
+| `references/nhso-rules/eclaim-system-guide.md`         | PPFS/Statement/ช่องทาง                     |
+| `references/youtube-extracted/zSUuHM9Y2Vk/analysis.md` | ปีงบ 69: อุทธรณ์ 2 ครั้ง, 15 วันทำการ      |
+| `references/youtube-extracted/R_g1VNkQ65w/analysis.md` | eMA, PPFS ขอทบทวน                          |
+| `knowledge/[department].md`                            | Department-specific clinical justification |
 
 ---
 
@@ -197,12 +208,14 @@ description: ร่างหนังสืออุทธรณ์ claim ถู
 สร้างไฟล์ DOCX ภาษาราชการไทยพร้อมพิมพ์ลงนามส่ง สปสช. ด้วย `scripts/generate_appeal.py`:
 
 **วิธีใช้:**
+
 ```bash
 python scripts/generate_appeal.py [output_path]
 # default: docs/appeal_AN69-03556.docx
 ```
 
 **ฟีเจอร์ DOCX:**
+
 - ฟอนต์ TH SarabunPSK ขนาด 14pt (มาตรฐานราชการ)
 - Page margins: top/bottom 2.5cm, left 3cm, right 2.5cm
 - ตาราง Patient Info (HN, AN, CID, Dx, Procedures, DRG, RW, charge, สิทธิ)
@@ -212,6 +225,7 @@ python scripts/generate_appeal.py [output_path]
 - ลงนาม ผอ.รพ.
 
 **Helper Functions:**
+
 - `set_thai_font(run, size, bold)` — ตั้งค่าฟอนต์ไทย
 - `add_thai_paragraph(doc, text, size, bold, align, space_after)` — เพิ่มย่อหน้าภาษาไทย
 - `add_table_row(table, cells_data, bold_first)` — เพิ่มแถวตาราง
@@ -222,19 +236,24 @@ python scripts/generate_appeal.py [output_path]
 ## API Integration (Backend)
 
 ### Deny Analysis → Auto Appeal Draft
+
 **Endpoint:** `POST /api/v1/cathlab/analyze-deny`
+
 - Input: `CathLabClaim` (ต้องมี `deny_codes`)
 - Output: `DenyAnalysis` (มี `appeal_draft` อัตโนมัติ)
 - Engine: `core/deny_analyzer.py` → `_generate_appeal_draft(claim, root_cause)`
 
 ### AI-Powered Appeal Generation
+
 **Endpoint:** `POST /appeal` (ใน `api/routes.py`)
+
 - Input: `AppealRequest` (hn, an, deny_reason, department, principal_dx, procedures, fund)
 - Output: `AppealResponse` (letter_text, supporting_docs, estimated_recovery)
 - Engine: `core/ai_engine.py` → `generate_appeal(claim_data, deny_reason, department)`
 - AI: เรียก Claude API พร้อม knowledge base ตามแผนก
 
 ### Appeal State Machine
+
 ```
 NONE → DRAFTED → SUBMITTED → APPROVED
                            → REJECTED → RE_DRAFTED → SUBMITTED
@@ -248,14 +267,14 @@ NONE → DRAFTED → SUBMITTED → APPROVED
 
 ## Core Modules
 
-| Module | ไฟล์ | หน้าที่ |
-|--------|------|--------|
-| Deny Analyzer | `core/deny_analyzer.py` | Root cause + auto appeal draft |
-| AI Engine | `core/ai_engine.py` | Claude API → formal appeal letter |
-| DOCX Generator | `scripts/generate_appeal.py` | สร้าง DOCX พร้อมพิมพ์ |
-| State Machine | `core/state_machine.py` | Appeal status transitions |
-| Repository | `core/repositories.py` | DB persistence |
-| Models | `core/models.py` | AppealRequest, AppealResponse, AppealStatus |
+| Module         | ไฟล์                         | หน้าที่                                     |
+| -------------- | ---------------------------- | ------------------------------------------- |
+| Deny Analyzer  | `core/deny_analyzer.py`      | Root cause + auto appeal draft              |
+| AI Engine      | `core/ai_engine.py`          | Claude API → formal appeal letter           |
+| DOCX Generator | `scripts/generate_appeal.py` | สร้าง DOCX พร้อมพิมพ์                       |
+| State Machine  | `core/state_machine.py`      | Appeal status transitions                   |
+| Repository     | `core/repositories.py`       | DB persistence                              |
+| Models         | `core/models.py`             | AppealRequest, AppealResponse, AppealStatus |
 
 ---
 

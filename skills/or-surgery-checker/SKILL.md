@@ -1,6 +1,6 @@
 ---
 name: or-surgery-checker
-description: "ตรวจสอบเคสห้องผ่าตัด (OR/Surgery) ก่อนส่งเบิก สปสช. ผ่าน FDH เพื่อลด Deny rate ใช้ skill นี้เมื่อ: มีเคสผ่าตัดที่ต้องส่งเบิก, ตรวจสอบ DRG coding ศัลยกรรม, เคสผ่าตัดติด Deny, หรือเมื่อพูดถึง OR, surgery, ผ่าตัด, implant, prosthesis, ortho, spine, hernia, appendectomy, cholecystectomy, C-section, ศัลยกรรม"
+description: 'ตรวจสอบเคสห้องผ่าตัด (OR/Surgery) ก่อนส่งเบิก สปสช. ผ่าน FDH เพื่อลด Deny rate ใช้ skill นี้เมื่อ: มีเคสผ่าตัดที่ต้องส่งเบิก, ตรวจสอบ DRG coding ศัลยกรรม, เคสผ่าตัดติด Deny, หรือเมื่อพูดถึง OR, surgery, ผ่าตัด, implant, prosthesis, ortho, spine, hernia, appendectomy, cholecystectomy, C-section, ศัลยกรรม'
 ---
 
 # OR Surgery Claim Checker
@@ -10,6 +10,7 @@ description: "ตรวจสอบเคสห้องผ่าตัด (OR/S
 ## เมื่อได้รับเคสมาตรวจ
 
 ### Step 1: รวบรวมข้อมูลเคส
+
 - Principal Diagnosis (ICD-10-TM)
 - Secondary Diagnoses ทั้งหมด
 - Procedure codes (ICD-9-CM) — ลำดับ main procedure ก่อน
@@ -20,9 +21,11 @@ description: "ตรวจสอบเคสห้องผ่าตัด (OR/S
 - วันที่ Admit / Discharge / ส่งเบิก
 
 ### Step 2: ตรวจสอบ 8 Checkpoints
+
 อ่าน `references/validation-rules.md` แล้วตรวจทุกข้อ
 
 ### Step 3: แสดงผล
+
 ```
 ═══════════════════════════════════════
   OR SURGERY CLAIM CHECK RESULT
@@ -49,18 +52,21 @@ Score: [XX%] Ready: [YES/NO]
 ```
 
 ### Step 4: ถ้าเคสติด Deny
+
 อ่าน `references/deny-fixes.md` → แนะนำวิธีแก้ + ร่างอุทธรณ์ถ้าต้องการ
 
 ## Reference Files
-| File | เนื้อหา | อ่านเมื่อ |
-|------|---------|----------|
-| `references/validation-rules.md` | 8 checkpoints | ทุกเคส |
-| `references/surgical-codes.md` | ICD-9-CM families | เช็ค code |
-| `references/implant-catalog.md` | High-value implants + ADP | เคสมี implant |
-| `references/deny-fixes.md` | Deny causes + fixes | เคสติด deny |
-| `references/drg-surgical.md` | DRG optimization | เพิ่ม RW |
+
+| File                             | เนื้อหา                   | อ่านเมื่อ     |
+| -------------------------------- | ------------------------- | ------------- |
+| `references/validation-rules.md` | 8 checkpoints             | ทุกเคส        |
+| `references/surgical-codes.md`   | ICD-9-CM families         | เช็ค code     |
+| `references/implant-catalog.md`  | High-value implants + ADP | เคสมี implant |
+| `references/deny-fixes.md`       | Deny causes + fixes       | เคสติด deny   |
+| `references/drg-surgical.md`     | DRG optimization          | เพิ่ม RW      |
 
 ## สิ่งสำคัญ
+
 - ใช้ภาษาไทยเป็นหลัก ยกเว้นศัพท์เทคนิค
 - Procedure ลำดับแรก = main procedure → กำหนด DRG group
 - Surgical DRG weight สูงกว่า Medical มาก → ต้อง code OR procedure ให้ถูก

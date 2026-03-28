@@ -1,6 +1,6 @@
 ---
 name: financial-simulator
-description: "จำลองสถานการณ์การเงินโรงพยาบาล (What-if Analysis) — เปลี่ยนตัวแปรแล้วดูผลกระทบทันที ใช้ skill นี้เมื่อ: what-if, จำลองการเงิน, เพิ่มเตียง, ปรับเงินเดือน, เปลี่ยน payer mix, ลงทุน, เปิดศูนย์ใหม่, financial projection, feasibility, budget, ถ้าเพิ่ม...จะ..., ถ้าลด...จะ..."
+description: 'จำลองสถานการณ์การเงินโรงพยาบาล (What-if Analysis) — เปลี่ยนตัวแปรแล้วดูผลกระทบทันที ใช้ skill นี้เมื่อ: what-if, จำลองการเงิน, เพิ่มเตียง, ปรับเงินเดือน, เปลี่ยน payer mix, ลงทุน, เปิดศูนย์ใหม่, financial projection, feasibility, budget, ถ้าเพิ่ม...จะ..., ถ้าลด...จะ...'
 ---
 
 # Financial Simulator — What-if Analysis
@@ -10,14 +10,18 @@ description: "จำลองสถานการณ์การเงินโ
 ## วิธีใช้
 
 ### Step 1: ข้อมูล Baseline
+
 ถามผู้ใช้ (หรือใช้ค่า default รพ.เอกชน 100 เตียง):
+
 - จำนวนเตียง, Occupancy rate
 - Revenue รวม, Expenses รวม
 - Staff count, Average salary
 - Payer mix (UC/SSO/Private/Cash)
 
 ### Step 2: เลือก Scenario
+
 เสนอ 6 scenarios พร้อมกัน หรือให้ผู้ใช้กำหนดเอง:
+
 1. เพิ่มเตียง (+N เตียง)
 2. ปรับเงินเดือนพยาบาล (+X%)
 3. เปลี่ยน Payer mix
@@ -26,9 +30,11 @@ description: "จำลองสถานการณ์การเงินโ
 6. Drug cost optimization (switch generic)
 
 ### Step 3: คำนวณ
+
 อ่าน `references/simulation-models.md` ใช้สูตรคำนวณ
 
 ### Step 4: แสดงผล
+
 ```
 ╔══════════════════════════════════════════════╗
 ║  FINANCIAL SIMULATION RESULT                 ║
@@ -44,8 +50,9 @@ description: "จำลองสถานการณ์การเงินโ
 ```
 
 ## References
-| File | อ่านเมื่อ |
-|------|----------|
-| `references/simulation-models.md` | ทุก scenario |
+
+| File                                | อ่านเมื่อ       |
+| ----------------------------------- | --------------- |
+| `references/simulation-models.md`   | ทุก scenario    |
 | `references/industry-benchmarks.md` | validate ตัวเลข |
-| `references/roi-calculations.md` | คำนวณ ROI |
+| `references/roi-calculations.md`    | คำนวณ ROI       |

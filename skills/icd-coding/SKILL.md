@@ -9,6 +9,7 @@ description: ช่วย coding ICD-10-TM และ ICD-9-CM จาก clinical
 > ช่วย coder ลดเวลา + ลด coding error + เพิ่ม DRG weight
 
 ## Trigger Keywords
+
 icd, รหัสโรค, coding, icd-10, icd-9, diagnosis, procedure, cc, mcc, drg, pdx, sdx, clinical notes, แปลงรหัส
 
 ---
@@ -20,6 +21,7 @@ icd, รหัสโรค, coding, icd-10, icd-9, diagnosis, procedure, cc, mcc
 รับได้ 2 แบบ:
 
 **แบบ 1: Clinical Notes (ภาษาไทย)**
+
 ```
 ผู้ป่วยชาย 65 ปี มาด้วยเจ็บหน้าอกรุนแรง 2 ชม.
 EKG: ST elevation V1-V4
@@ -30,6 +32,7 @@ Echo: EF 35%, anterior wall hypokinesis
 ```
 
 **แบบ 2: รหัสที่มีอยู่แล้ว (ตรวจสอบ)**
+
 ```
 PDx: I21.0
 SDx: I10, E11.9
@@ -59,35 +62,36 @@ Proc: 36.06
 
 **MCC (Major CC) — เพิ่ม RW 20-40%:**
 
-| Code | Description | ดูจากอะไร |
-|------|-------------|----------|
-| A41.x | Sepsis (ระบุ organism) | Blood culture, ไข้สูง, WBC สูง |
-| R65.2x | Severe sepsis | Sepsis + organ dysfunction |
-| J96.0x | Acute respiratory failure | ใส่ ventilator, O2 sat ต่ำ |
-| N17.x | Acute kidney injury | Cr สูงขึ้นเฉียบพลัน |
-| I50.2x | Acute systolic HF | EF <40% + อาการเฉียบพลัน |
-| I50.3x | Acute diastolic HF | EF ≥50% + อาการเฉียบพลัน |
-| N18.4 | CKD stage 4 | eGFR 15-29 |
-| J44.1 | COPD acute exacerbation | COPD + acute worsening |
+| Code   | Description               | ดูจากอะไร                      |
+| ------ | ------------------------- | ------------------------------ |
+| A41.x  | Sepsis (ระบุ organism)    | Blood culture, ไข้สูง, WBC สูง |
+| R65.2x | Severe sepsis             | Sepsis + organ dysfunction     |
+| J96.0x | Acute respiratory failure | ใส่ ventilator, O2 sat ต่ำ     |
+| N17.x  | Acute kidney injury       | Cr สูงขึ้นเฉียบพลัน            |
+| I50.2x | Acute systolic HF         | EF <40% + อาการเฉียบพลัน       |
+| I50.3x | Acute diastolic HF        | EF ≥50% + อาการเฉียบพลัน       |
+| N18.4  | CKD stage 4               | eGFR 15-29                     |
+| J44.1  | COPD acute exacerbation   | COPD + acute worsening         |
 
 **CC — เพิ่ม RW 5-15%:**
 
-| Code | Description | ดูจากอะไร |
-|------|-------------|----------|
+| Code        | Description                  | ดูจากอะไร                |
+| ----------- | ---------------------------- | ------------------------ |
 | E11.2-E11.6 | DM type 2 with complications | Lab: HbA1c, Cr, eye exam |
-| N18.3 | CKD stage 3 | eGFR 30-59 |
-| I48.x | Atrial fibrillation | EKG |
-| E87.x | Electrolyte disorders | Lab: Na, K, Ca |
-| D64.x | Anemia | Hb/Hct |
+| N18.3       | CKD stage 3                  | eGFR 30-59               |
+| I48.x       | Atrial fibrillation          | EKG                      |
+| E87.x       | Electrolyte disorders        | Lab: Na, K, Ca           |
+| D64.x       | Anemia                       | Hb/Hct                   |
 
 **ไม่มีผลต่อ RW (อย่า code เพื่อเพิ่ม weight):**
 
-| Code | Description |
-|------|-------------|
-| I10 | Essential hypertension |
-| E78.5 | Dyslipidemia |
+| Code  | Description            |
+| ----- | ---------------------- |
+| I10   | Essential hypertension |
+| E78.5 | Dyslipidemia           |
 
 **กฎสำคัญ:**
+
 - MCC 1 ตัว = RW สูงสุดในกลุ่มแล้ว (ไม่ต้อง stack)
 - CC Exclusion: บาง SDx ถูกตัดจาก CC เมื่อเกี่ยวกับ PDx → ตรวจ Appendix F2
 - **Code ทุก comorbidity ที่มีจริง** — ไม่ใช่แค่ที่ส่งผลต่อ DRG
@@ -96,13 +100,13 @@ Proc: 36.06
 
 ตรวจว่า PDx สอดคล้องกับ procedures:
 
-| PDx Category | Expected Procedures | ถ้าไม่มี |
-|-------------|--------------------|---------|
-| I21.x (Acute MI) | 36.06/36.07 (PCI) หรือ 36.1x (CABG) | OK ถ้า medical treatment |
-| I20.0 (Unstable angina) | 36.06 (PCI) | ถ้าทำ PCI ควรเปลี่ยน PDx เป็น I21.x? |
-| C-codes (Cancer) | 99.25 (Chemo) หรือ surgical | ต้องมี cancer PDx ถ้า claim chemo |
-| N18.5 (CKD stage 5) | 39.95 (Hemodialysis) | OK |
-| J18.x (Pneumonia) | ไม่ควรมี Thoracoscopy | ถ้ามี → เพิ่ม Pleural effusion (J91) |
+| PDx Category            | Expected Procedures                 | ถ้าไม่มี                             |
+| ----------------------- | ----------------------------------- | ------------------------------------ |
+| I21.x (Acute MI)        | 36.06/36.07 (PCI) หรือ 36.1x (CABG) | OK ถ้า medical treatment             |
+| I20.0 (Unstable angina) | 36.06 (PCI)                         | ถ้าทำ PCI ควรเปลี่ยน PDx เป็น I21.x? |
+| C-codes (Cancer)        | 99.25 (Chemo) หรือ surgical         | ต้องมี cancer PDx ถ้า claim chemo    |
+| N18.5 (CKD stage 5)     | 39.95 (Hemodialysis)                | OK                                   |
+| J18.x (Pneumonia)       | ไม่ควรมี Thoracoscopy               | ถ้ามี → เพิ่ม Pleural effusion (J91) |
 
 ### Step 5: Output
 
@@ -168,17 +172,17 @@ Estimated payment: ~35,070 บาท
 
 อ้างอิง knowledge files ตามแผนก:
 
-| แผนก | Knowledge File | รหัสที่ใช้บ่อย |
-|------|---------------|---------------|
-| Cath Lab | `knowledge/cath-lab.md` | I21.x, I20.x, 36.0x, 37.2x |
-| OR | `knowledge/or-surgery.md` | Various surgical codes |
-| Chemo | `knowledge/chemo.md` | C-codes, 99.25 |
-| Dialysis | `knowledge/dialysis.md` | N18.x, 39.95 |
-| ICU/NICU | `knowledge/icu-nicu.md` | J96.x, ventilator codes |
-| ER/UCEP | `knowledge/er-ucep.md` | Emergency codes |
-| ODS/MIS | `knowledge/ods-mis.md` | Same-day surgery codes |
-| OPD/NCD | `knowledge/opd-ncd.md` | E11.x, I10, chronic codes |
-| Rehab | `knowledge/rehab-palliative.md` | Z50.x, rehabilitation |
+| แผนก     | Knowledge File                  | รหัสที่ใช้บ่อย             |
+| -------- | ------------------------------- | -------------------------- |
+| Cath Lab | `knowledge/cath-lab.md`         | I21.x, I20.x, 36.0x, 37.2x |
+| OR       | `knowledge/or-surgery.md`       | Various surgical codes     |
+| Chemo    | `knowledge/chemo.md`            | C-codes, 99.25             |
+| Dialysis | `knowledge/dialysis.md`         | N18.x, 39.95               |
+| ICU/NICU | `knowledge/icu-nicu.md`         | J96.x, ventilator codes    |
+| ER/UCEP  | `knowledge/er-ucep.md`          | Emergency codes            |
+| ODS/MIS  | `knowledge/ods-mis.md`          | Same-day surgery codes     |
+| OPD/NCD  | `knowledge/opd-ncd.md`          | E11.x, I10, chronic codes  |
+| Rehab    | `knowledge/rehab-palliative.md` | Z50.x, rehabilitation      |
 
 ---
 

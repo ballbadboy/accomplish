@@ -5,28 +5,31 @@
 ### Flow: PDx → MDC → OR check → PDC → DC → DRG → PCCL → final RW
 
 ### MDC ที่พบ deny บ่อย
-| MDC | System | Departments |
-|-----|--------|-------------|
-| 05 | Circulatory | Cath Lab, Cardiac surgery |
-| 08 | Musculoskeletal | Ortho OR (hip/knee) |
-| 11 | Kidney/Urinary | Dialysis, Urology |
-| 17 | Myeloproliferative | Chemo, Hematology |
-| 04 | Respiratory | ICU, Ventilator |
-| Pre-MDC | Special | Transplant, Tracheostomy, ECMO |
+
+| MDC     | System             | Departments                    |
+| ------- | ------------------ | ------------------------------ |
+| 05      | Circulatory        | Cath Lab, Cardiac surgery      |
+| 08      | Musculoskeletal    | Ortho OR (hip/knee)            |
+| 11      | Kidney/Urinary     | Dialysis, Urology              |
+| 17      | Myeloproliferative | Chemo, Hematology              |
+| 04      | Respiratory        | ICU, Ventilator                |
+| Pre-MDC | Special            | Transplant, Tracheostomy, ECMO |
 
 ### DRG Error Codes
-| Error | Meaning | Fix |
-|-------|---------|-----|
-| 1 | No PDx | Add PDx to DIA file |
-| 2 | Invalid PDx | Fix ICD-10 code |
-| 3 | Unacceptable PDx | Use valid PDx |
-| 4 | PDx invalid for age | Check age |
-| 5 | PDx invalid for sex | Check sex |
-| 7 | Ungroupable (sex) | Fix sex data |
-| 8 | Ungroupable (D/C) | Fix discharge type |
-| 9 | LOS error | Fix dates |
+
+| Error | Meaning             | Fix                 |
+| ----- | ------------------- | ------------------- |
+| 1     | No PDx              | Add PDx to DIA file |
+| 2     | Invalid PDx         | Fix ICD-10 code     |
+| 3     | Unacceptable PDx    | Use valid PDx       |
+| 4     | PDx invalid for age | Check age           |
+| 5     | PDx invalid for sex | Check sex           |
+| 7     | Ungroupable (sex)   | Fix sex data        |
+| 8     | Ungroupable (D/C)   | Fix discharge type  |
+| 9     | LOS error           | Fix dates           |
 
 ### LOS Adjustment
+
 - LOS < Trim Low → RW reduced
 - Trim Low ≤ LOS ≤ Trim High → base RW
 - LOS > Trim High → RW increased (per diem)
@@ -36,29 +39,32 @@
 ## FDH 16-File Validation
 
 ### Required Fields (ทุก department)
-| File | Key Fields | Common Error |
-|------|-----------|-------------|
-| IPD | AN, DATEADM, DATEDSC, DISCHT, WARD | Date format, D/C < ADM |
-| DIA | DIAG (ICD-10), DXTYPE (1=PDx) | Invalid code, no PDx |
-| OPR | OPCODE (ICD-9-CM), DATEOP, OPTYPE | Invalid code, date out of range |
-| ADP | TYPE (3-5), CODE, QTY, RATE, SERIALNO | Code mismatch, qty wrong |
-| DRU | DID (GPUID), AMOUNT | Drug catalog mismatch |
-| CHA | CHRGITEM, AMOUNT | Missing items |
-| INS | INSCL (สิทธิ) | Wrong fund |
+
+| File | Key Fields                            | Common Error                    |
+| ---- | ------------------------------------- | ------------------------------- |
+| IPD  | AN, DATEADM, DATEDSC, DISCHT, WARD    | Date format, D/C < ADM          |
+| DIA  | DIAG (ICD-10), DXTYPE (1=PDx)         | Invalid code, no PDx            |
+| OPR  | OPCODE (ICD-9-CM), DATEOP, OPTYPE     | Invalid code, date out of range |
+| ADP  | TYPE (3-5), CODE, QTY, RATE, SERIALNO | Code mismatch, qty wrong        |
+| DRU  | DID (GPUID), AMOUNT                   | Drug catalog mismatch           |
+| CHA  | CHRGITEM, AMOUNT                      | Missing items                   |
+| INS  | INSCL (สิทธิ)                         | Wrong fund                      |
 
 ### Timing
+
 - ≤24 hrs after D/C = **fast track** (สปสช. จ่ายใน 72 ชม.)
 - ≤30 days = normal (IPD จ่ายใน 30 วัน)
-- >30 days = **penalty** (ลดอัตราจ่าย)
+- > 30 days = **penalty** (ลดอัตราจ่าย)
 
 ### ADP TYPE by Department
-| Department | TYPE | Items |
-|-----------|------|-------|
-| Cath Lab | 5 | Stent, balloon, guidewire |
-| OR | 4-5 | Implants, plates, screws |
-| Chemo | 3 | Chemo drugs (if not in DRU) |
-| Dialysis | 3 | Dialyzer, tubing |
-| ICU | 3-5 | ECMO, IABP, temp pacemaker |
+
+| Department | TYPE | Items                       |
+| ---------- | ---- | --------------------------- |
+| Cath Lab   | 5    | Stent, balloon, guidewire   |
+| OR         | 4-5  | Implants, plates, screws    |
+| Chemo      | 3    | Chemo drugs (if not in DRU) |
+| Dialysis   | 3    | Dialyzer, tubing            |
+| ICU        | 3-5  | ECMO, IABP, temp pacemaker  |
 
 ---
 
@@ -99,12 +105,13 @@
 ---
 
 ## C-Code Errors & Fixes
-| C-Code | Problem | Fix |
-|--------|---------|-----|
-| C-438 | สิทธิไม่ตรง | Check fund type + project code |
-| Drug mismatch | DRU ≠ Drug Catalog | Remap GPUID |
-| Lab mismatch | Lab ≠ Lab Catalog | Remap lab codes |
-| ADP error | Device code/qty wrong | Match Fee Schedule + GPO |
-| DRG pending | Data incomplete | Check all 16 files |
-| Authen missing | No Authen Code | Verify before D/C |
-| Late submission | >30 days | ต้องมี alert system |
+
+| C-Code          | Problem               | Fix                            |
+| --------------- | --------------------- | ------------------------------ |
+| C-438           | สิทธิไม่ตรง           | Check fund type + project code |
+| Drug mismatch   | DRU ≠ Drug Catalog    | Remap GPUID                    |
+| Lab mismatch    | Lab ≠ Lab Catalog     | Remap lab codes                |
+| ADP error       | Device code/qty wrong | Match Fee Schedule + GPO       |
+| DRG pending     | Data incomplete       | Check all 16 files             |
+| Authen missing  | No Authen Code        | Verify before D/C              |
+| Late submission | >30 days              | ต้องมี alert system            |
